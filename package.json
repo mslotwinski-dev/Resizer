@@ -1,0 +1,19 @@
+{
+  "name": "resizer",
+  "version": "1.0.0",
+  "description": "Simply resizes your icon",
+  "main": "src/app.c",
+  "scripts": {
+    "start": "make && cd bin && clear && resizer.exe ccccccccccsad "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mslotwinski-dev/Resizer.git"
+  },
+  "author": "Mateusz Słotwiński",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mslotwinski-dev/Resizer/issues"
+  },
+  "homepage": "https://github.com/mslotwinski-dev/Resizer#readme"
+}
