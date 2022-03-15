@@ -1,5 +1,4 @@
 CFLAGS = -Wall
-
 SRC=$(wildcard */*/*.c) $(wildcard */*.c)
 
 resizer: $(SRC)

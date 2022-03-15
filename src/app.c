@@ -1,8 +1,13 @@
 #include <stdio.h>
-#include "./cmd/index.h"
+#include "./cli/index.h"
+#include "./log/index.h"
 
 int main(int argc, char *argv[]) {
-  sayHello();
+  PrintHello();
 
-  printf("%s \n", argv[1]);
+  if(argc == 1) {
+    Print(Error, NoFile);
+  }
+
+  return 0;
 }
