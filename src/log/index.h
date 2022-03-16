@@ -1,7 +1,6 @@
 #pragma once
+#include "../libs.h"
 
-#include <stdio.h>
-#include <stdlib.h>
 #include "./codes.h"
 
 #define RED     "\x1b[31m"
