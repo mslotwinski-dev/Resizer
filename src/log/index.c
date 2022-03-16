@@ -4,6 +4,7 @@ char* ParseStatus(enum StatusCode Status) {
   printf(RESET);
 
   switch (Status) {
+    case CreatedFiles:  return "Successfully created icons";
     case NoFile:        return "No file! Please specify path to your file.";
     case InvalidFile:   return "Invalid file! Make sure you enter the correct filename and its extension is png.";
     default:            return "Invalid Status - please report an error.";

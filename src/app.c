@@ -2,10 +2,6 @@
 #include "./config/config.h"
 #include "./files/index.h"
 
-#define STRING_SIZE 512
-
-const int* Sizes = {16, 32};
-
 int main(int argc, char *argv[]) {
   printf(CYAN ">>> Image Resizer <<<" RESET "\n");
 
@@ -18,7 +14,7 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  ExecuteFile(argv[1], Sizes);
+  ExecuteFile(argv[1]);
 
   return 0;
 }

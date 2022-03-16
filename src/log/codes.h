@@ -9,6 +9,7 @@ enum Mode {
 };
 
 enum StatusCode {
+  CreatedFiles,
   NoFile,
   PathNotFound,
   InvalidFile,
