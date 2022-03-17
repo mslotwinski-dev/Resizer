@@ -1,43 +1,37 @@
 #include "./index.h"
 #include "./sizes.h"
 
-void ExecuteFile(char* path) {
-  FILE *source, *target;
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb/stb_image.h"
 
-  source = fopen(path, "rb");
-  if (source == NULL) {
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb/stb_image_write.h"
+
+#define STB_IMAGE_RESIZE_IMPLEMENTATION
+#include "stb/stb_image_resize.h"
+
+void ExecuteFile(char* path) {
+  mkdir("dist");
+
+  int width, height, comp;
+  unsigned char *img = stbi_load(path, &width, &height, &comp, 0);
+
+  if (img == NULL) {
     Print(Error, InvalidFile);
   }
 
-  fseek(source, 0, SEEK_END);
-  int length = ftell(source);
-  fseek(source, 0, SEEK_SET);
-
-  mkdir("dist");
   for (int i = 0; i < (sizeof(Sizes) / sizeof(int)); i++) {
-    int g;
+    unsigned int size = Sizes[i];
+    char *c_path = CreatePath(size);
 
-    char path[STRING_SIZE] = "dist/";
-    char size_to_string[STRING_SIZE];
-    snprintf( size_to_string, STRING_SIZE, "%d", Sizes[i] );
+    unsigned char *resized = malloc(width * height * comp);
 
-    strcat(path, size_to_string);
-    strcat(path, "x");
-    strcat(path, size_to_string);
-    strcat(path, ".png");
+    stbir_resize_uint8(img, width, height, 0, resized, size, size, 0, comp);
 
-
-    target = fopen(path, "wb"); 
-
-      if( target == NULL ) { fclose(source); }
-
-      for(g = 0; g < length; g++){
-          fputc(fgetc(source), target);
-      }
-
-      fclose(target);
+    stbi_write_png(c_path, size, size, comp, resized, size * comp);
   }
 
   Print(Success, CreatedFiles);
-  fclose(source); 
+
+  stbi_image_free(img);
 }

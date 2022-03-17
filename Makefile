@@ -1,4 +1,4 @@
-CFLAGS = -Wall
+CFLAGS = -Imodules
 SRC=$(wildcard */*/*.c) $(wildcard */*.c)
 
 resizer: $(SRC)

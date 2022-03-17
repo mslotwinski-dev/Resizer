@@ -1,5 +1,4 @@
 #include "../libs.h"
-
-#define STRING_SIZE 512
+#include "./path.h"
 
 void ExecuteFile(char* path);
